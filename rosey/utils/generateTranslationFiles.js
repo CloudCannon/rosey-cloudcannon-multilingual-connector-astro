@@ -39,9 +39,6 @@ async function generateTranslationFilesForLocale(locale) {
   const oldLocaleData = await readJsonFromFile(localePath);
   const inputFileData = await readJsonFromFile(inputFilePath);
   const inputURLFileData = await readJsonFromFile(inputURLFilePath);
-  const smartlingTranslationData = await readJsonFromFile(
-    `./rosey/smartling-translations/${locale}.json`
-  );
 
   const pages = Object.keys(inputURLFileData.keys);
 
@@ -138,17 +135,9 @@ async function generateTranslationFilesForLocale(locale) {
           cleanedOutputFileData[inputKey] = translationFileData[inputKey];
         }
 
-        // console.log("smartlingTranslationData: ", smartlingTranslationData);
         // If entry doesn't exist in our output file, add it
-        // Check smartling translations for the translation and add it here if it exists
         if (!cleanedOutputFileData[inputKey]) {
-          if (smartlingTranslationData[inputKey]) {
-            cleanedOutputFileData[inputKey] = nhm.translate(
-              smartlingTranslationData[inputKey]
-            );
-          } else {
-            cleanedOutputFileData[inputKey] = "";
-          }
+          cleanedOutputFileData[inputKey] = "";
         }
 
         cleanedOutputFileData["_inputs"][inputKey] = getInputConfig(

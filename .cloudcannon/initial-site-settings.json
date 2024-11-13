@@ -20,10 +20,6 @@
       {
         "key": "LOCALES",
         "value": "fr-FR,de-DE,es-ES"
-      },
-      {
-        "key": "SMARTLING_TRANSLATION_ENABLED",
-        "value": false
       }
     ]
   }

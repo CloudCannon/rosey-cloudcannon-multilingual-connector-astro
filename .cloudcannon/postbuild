@@ -6,9 +6,6 @@ then
   echo "🌹🌹  Generating base.json from built site with Rosey"
   npx rosey generate --source dist
   echo "🌹🌹  Generated a base.json from the built site"
-  echo "🤖🤖  Generating Smartling translations"
-  node rosey/utils/callSmartling.js
-  echo "🤖🤖  Generated Smartling translations"
   echo "🏗️🏗️  Generating translation files from base.json"
   node rosey/utils/generateTranslationFiles.js
   echo "🏗️🏗️  Generated translation files to be edited"
