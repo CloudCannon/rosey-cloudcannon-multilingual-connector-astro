@@ -3,31 +3,17 @@ import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import { YouTube } from "astro-embed";
 import Markdown from "../utility/rosey-markdown.astro";
-import {
-  selectRoseyTranslation,
-  generateRoseyID,
-} from "../../../rosey/utils/helpers/component-helper.js";
+import { generateRoseyID } from "../../../rosey/utils/helpers/component-helper.js";
 
 interface Props {
-  selected_page_translation: string;
   background_color: string;
   flipped: boolean;
   heading: {
-    heading_text: {
-      original: string;
-      es_ES_translation: string;
-      de_DE_translation: string;
-      fr_FR_translation: string;
-    };
+    heading_text: string;
     color: string;
   };
   text: {
-    markdown_content: {
-      original: string;
-      es_ES_translation: string;
-      de_DE_translation: string;
-      fr_FR_translation: string;
-    };
+    markdown_content: string;
     color: string;
   };
   media: {
@@ -37,12 +23,7 @@ interface Props {
   };
   button: {
     _bookshop_name: string;
-    button_text: {
-      original: string;
-      es_ES_translation: string;
-      de_DE_translation: string;
-      fr_FR_translation: string;
-    };
+    button_text: string;
     button_icon: string;
     button_link: string;
     background_color?: string;
@@ -52,10 +33,6 @@ interface Props {
 }
 
 const block = Astro.props;
-const translationData = {
-  selected_page_translation: block.selected_page_translation,
-  bookshop_env: ENV_BOOKSHOP_LIVE,
-};
 
 const buttons = import.meta.glob("/src/components/buttons/**/*.astro", {
   eager: true,
@@ -95,23 +72,12 @@ const headingStyle = `color: ${block.heading.color};`;
             style={headingStyle}
             class="text-4xl"
             data-rosey={generateRoseyID(block.heading.heading_text)}>
-            {selectRoseyTranslation(
-              block.heading.heading_text,
-              translationData
-            )}
+            {block.heading.heading_text}
           </h2>
           <div class="mb-4" style={`color: ${block.text.color};`}>
-            <Markdown
-              content={block.text.markdown_content}
-              selected_page_translation={block.selected_page_translation}
-            />
+            <Markdown content={block.text.markdown_content} />
           </div>
-          {block.button && (
-            <Button
-              {...block.button}
-              selected_page_translation={block.selected_page_translation}
-            />
-          )}
+          {block.button && <Button {...block.button} />}
         </div>
       </div>
     ) : (
@@ -121,23 +87,12 @@ const headingStyle = `color: ${block.heading.color};`;
             style={headingStyle}
             class="text-4xl"
             data-rosey={generateRoseyID(block.heading.heading_text)}>
-            {selectRoseyTranslation(
-              block.heading.heading_text,
-              translationData
-            )}
+            {block.heading.heading_text}
           </h2>
           <div class="mb-4" style={`color: ${block.text.color};`}>
-            <Markdown
-              content={block.text.markdown_content}
-              selected_page_translation={block.selected_page_translation}
-            />
+            <Markdown content={block.text.markdown_content} />
           </div>
-          {block.button && (
-            <Button
-              {...block.button}
-              selected_page_translation={block.selected_page_translation}
-            />
-          )}
+          {block.button && <Button {...block.button} />}
         </div>
         {block.media.image_path ? (
           <Image

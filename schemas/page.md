@@ -9,7 +9,6 @@ seo:
   open_graph_type:
   no_index: false
 translations:
-  selected_page_translation: None
   translate_es_ES: true
   translate_de_DE: true
   translate_fr_FR: true

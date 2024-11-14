@@ -2,7 +2,6 @@
 title: Blog
 page_size: 6
 translations:
-  selected_page_translation: fr-FR
   translate_es_ES: true
   translate_de_DE: true
   translate_fr_FR: true

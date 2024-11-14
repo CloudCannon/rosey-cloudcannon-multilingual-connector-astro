@@ -24,7 +24,7 @@ const formatInnerText = (text: string) => {
 const isTextElement = (element: Element) =>
   textElementTagNames.includes(element.tagName);
 
-const { content, selected_page_translation } = Astro.props;
+const { content } = Astro.props;
 const HTMLTextContent = md.render(content.original);
 const hastTree = fromHtmlIsomorphic(HTMLTextContent, { fragment: true });
 visit(hastTree, function (node, index, parent) {
@@ -65,25 +65,6 @@ visit(hastTree, function (node, index, parent) {
   }
 });
 const taggedHTML = toHtml(hastTree);
-
-const locales = ["es-ES", "de-DE", "fr-FR"];
 ---
 
-{
-  ENV_BOOKSHOP_LIVE ? (
-    selected_page_translation !== "None" ? (
-      locales.map((locale) => {
-        if (locale === selected_page_translation) {
-          const renderedHtml = md.render(
-            content[`${locale.replace("-", "_")}_translation`]
-          );
-          return <div class="markdown-text" set:html={renderedHtml} />;
-        }
-      })
-    ) : (
-      <div class="markdown-text" set:html={HTMLTextContent} />
-    )
-  ) : (
-    <div class="markdown-text" set:html={taggedHTML} />
-  )
-}
+<div class="markdown-text" set:html={taggedHTML} />

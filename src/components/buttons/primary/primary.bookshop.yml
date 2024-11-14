@@ -11,11 +11,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  button_text:
-    original:
-    es_ES_translation:
-    de_DE_translation:
-    fr_FR_translation:
+  button_text: 
   button_icon:
   button_link: ""
   background_color: ""

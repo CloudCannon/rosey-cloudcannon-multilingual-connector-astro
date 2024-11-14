@@ -1,9 +1,6 @@
 ---
 export interface Props {
   contentBlocks: any[];
-  selectedPageTranslation: {
-    selected_page_translation: string;
-  };
 }
 
 const components: Record<string, Function> = {};
@@ -19,17 +16,13 @@ Object.entries(componentImports).forEach(([path, obj]) => {
   components[bookshopName] = (obj as any).default;
 });
 
-const { contentBlocks, selectedPageTranslation } = Astro.props;
+const { contentBlocks } = Astro.props;
 ---
 
 {
   contentBlocks.map((block, i) => {
     const Component = components[block._bookshop_name];
-    const blockWithSelectedTranslation = {
-      selected_page_translation:
-        selectedPageTranslation.selected_page_translation,
-      ...block,
-    };
-    return <Component {...blockWithSelectedTranslation} key={i} />;
+
+    return <Component {...block} key={i} />;
   })
 }

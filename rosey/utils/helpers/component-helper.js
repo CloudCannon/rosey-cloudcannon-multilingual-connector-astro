@@ -23,18 +23,3 @@ export function generateRoseyMarkdownID(text) {
 
   return `markdown:${formatAndSlugifyMarkdownText(text)}`;
 }
-
-export function selectRoseyTranslation(translations_object, translationData) {
-  let textToShow = "";
-  locales.map((locale) => {
-    if (locale === translationData.selected_page_translation) {
-      textToShow =
-        translations_object[`${locale.replace("-", "_")}_translation`];
-    }
-  });
-  return translationData.bookshop_env
-    ? translationData.selected_page_translation === "None"
-      ? translations_object.original
-      : textToShow
-    : translations_object.original;
-}

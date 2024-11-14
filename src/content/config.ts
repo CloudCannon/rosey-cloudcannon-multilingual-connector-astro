@@ -30,7 +30,6 @@ const pageSchema = z.object({
   title: z.string(),
   content_blocks: z.array(z.any()),
   translations: z.object({
-    selected_page_translation: z.string(),
     translate_es_ES: z.boolean(),
     translate_de_DE: z.boolean(),
     translate_fr_FR: z.boolean(),

@@ -167,14 +167,6 @@ _inputs:
     type: switch
   translate_de_DE:
     type: switch
-  selected_page_translation:
-    type: select
-    options:
-      values:
-        - None
-        - es-ES
-        - de-DE
-        - fr-FR
   es_ES_translation:
     type: textarea
     options:
@@ -428,47 +420,3 @@ _snippets:
         comment: This text will be tinted
 
 _structures:
-  rosey_translation:
-    values:
-      - label: Text Content
-        value:
-          original:
-          es_ES_translation:
-          de_DE_translation:
-          fr_FR_translation:
-        _inputs:
-          original:
-            type: textarea
-        preview:
-          icon: translate
-  rosey_translation_markdown:
-    values:
-      - label: Text Content
-        value:
-          original:
-          es_ES_translation:
-          de_DE_translation:
-          fr_FR_translation:
-        _inputs:
-          original:
-            type: markdown
-            comment: Do not change the order of a paragraph in the original text on the same save that you update it's translation.
-            options: &simple_markdown
-              bold: true
-              italic: true
-              link: true
-              undo: true
-              redo: true
-              removeformat: true
-              copyformatting: true
-          es_ES_translation:
-            type: markdown
-            options: *simple_markdown
-          de_DE_translation:
-            type: markdown
-            options: *simple_markdown
-          fr_FR_translation:
-            type: markdown
-            options: *simple_markdown
-        preview:
-          icon: translate
